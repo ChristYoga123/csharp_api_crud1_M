@@ -13,14 +13,14 @@ namespace CRUD1_M.Controllers.Impl
         private RegionServiceImpl regionService;
         public RegionController(IConfiguration configuration)
         {
-            this.credentials = configuration.GetConnectionString("CRUD1_M");
+            this.credentials = configuration.GetConnectionString("paa");
             this.regionService = new RegionServiceImpl(new Repositories.Impl.RegionRepositoryImpl(new Utils.DbUtil(this.credentials)));
         }
         [HttpGet]
         public ActionResult<Region> findAll()
         {
             return Ok(this.regionService.findAll());
-        }
+        } 
         [HttpGet("{id}")]
         public ActionResult<Region> findById(int id)
         {
