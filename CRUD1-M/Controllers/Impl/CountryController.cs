@@ -1,6 +1,7 @@
 ﻿using CRUD1_M.DTOs;
 using CRUD1_M.Entities;
 using CRUD1_M.Services.Impl;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CRUD1_M.Controllers.Impl
@@ -18,7 +19,7 @@ namespace CRUD1_M.Controllers.Impl
             this.countryService = new CountryServiceImpl(new Repositories.Impl.CountryRepositoryImpl(new Utils.DbUtil(this.credentials)));
         }
 
-        [HttpGet]
+        [HttpGet, Authorize]
         public ActionResult<Country> findAll()
         {
             return Ok(this.countryService.findAll());
